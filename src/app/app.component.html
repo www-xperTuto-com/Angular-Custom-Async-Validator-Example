@@ -1,0 +1,40 @@
+<!--app.component.html-->
+
+<form [formGroup]="userForm" (ngSubmit)="adduser()">
+
+  <mat-card>
+    <mat-form-field appearance="fill">
+      <mat-label>Pseudo*</mat-label>
+      <input matInput type="text" formControlName="pseudo" placeholder="Pseudo">
+      <mat-error *ngIf="this.userForm.controls['pseudo'].hasError('required')" >
+        <p>The Pseudo is required</p>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Name*</mat-label>
+      <input matInput type="text" formControlName="name" placeholder="Name">
+      <mat-error *ngIf="this.userForm.controls['name'].hasError('required')" >
+        <p>The Name is required</p>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Email*</mat-label>
+      <input matInput type="text" formControlName="email" placeholder="Email">
+      <mat-error *ngIf="this.userForm.controls['email'].hasError('isEmailExist')" >
+        <p>The Email is already exist</p>
+      </mat-error>
+      <mat-error *ngIf="this.userForm.controls['email'].hasError('required')" >
+        <p>The Email is required</p>
+      </mat-error>
+
+    </mat-form-field>
+  </mat-card>
+
+  <mat-card-actions>
+    <br>
+    <button type="submit" mat-raised-button color="primary">Submit</button><br><br>
+  </mat-card-actions>
+
+</form>
